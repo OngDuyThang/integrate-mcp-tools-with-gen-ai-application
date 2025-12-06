@@ -1,0 +1,10 @@
+{
+    "python.analysis.diagnosticSeverityOverrides": {
+        "reportPossiblyUnboundVariable": "none"
+    },
+    "autopep8.args": [
+        "--ignore=E302",
+        "--ignore=E402"
+    ],
+    "python-envs.pythonProjects": []
+}
