@@ -4,7 +4,7 @@ import httpx
 from mcp.server.fastmcp import FastMCP
 
 # Initialize the MCP server
-mcp = FastMCP("weather", host="localhost", port=8000)
+mcp = FastMCP("weather", port=8000)
 
 # --- Helper Functions ---
 

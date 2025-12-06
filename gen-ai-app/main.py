@@ -27,9 +27,12 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY")
 BASE_DIR = Path(__file__).resolve().parent
 
+METHOD = os.environ.get("METHOD", "http")
+MCP_SERVER_HOST = os.environ.get("MCP_SERVER_HOST", "127.0.0.1")
+
 # --- MCP Client ---
 mcp_client = MCPClient(
-    lambda: streamablehttp_client("http://localhost:8000/mcp"))
+    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:8000/mcp"))
 
 # --- Pydantic Models ---
 
@@ -142,4 +145,4 @@ async def converse(request: ChatRequest):
 # --- Run Server ---
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="localhost", port=8001)
+    uvicorn.run(app, port=8001)
