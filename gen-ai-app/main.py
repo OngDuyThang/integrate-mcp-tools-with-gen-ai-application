@@ -28,17 +28,17 @@ MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY")
 BASE_DIR = Path(__file__).resolve().parent
 
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
-METHOD = "http" if ENVIRONMENT == "dev" else "https"
-
 MCP_SERVER_HOST = os.environ.get("MCP_SERVER_HOST", "127.0.0.1")
+MCP_SERVER_URL = f"http://{MCP_SERVER_HOST}:8000/mcp" if ENVIRONMENT == "dev" else f"https://{MCP_SERVER_HOST}/mcp"
 
 # Setup for run locally or deploy on Render
 HOST = "127.0.0.1" if ENVIRONMENT == "dev" else "0.0.0.0"
 PORT = int(os.environ.get("PORT", "8001"))  # Gen AI app run on local 8001
 
+
 # --- MCP Client ---
 mcp_client = MCPClient(
-    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:8000/mcp"))
+    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:{MCP_SERVER_PORT}/mcp"))
 
 # --- Pydantic Models ---
 
