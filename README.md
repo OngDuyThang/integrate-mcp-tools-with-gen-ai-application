@@ -1,6 +1,7 @@
 # 🌦️ Weather Agent: Strands Agents + Gemini/Mistral + MCP server tools
 
-A next-generation AI application that demonstrates the power of the **Model Context Protocol (MCP)** and **Strands Agents**. This project decouples AI logic (the Agent) from tool logic (the MCP Server), allowing us to switch between cloud models (Gemini, Mistral) while using the **exact same** set of tools.
+A next-generation AI application that demonstrates the power of the **Model Context Protocol (MCP)** and **Strands Agents**.  
+This project decouples AI logic (the Agent) from tool logic (the MCP Server), allowing us to switch between cloud models (Gemini, Mistral) while using the **exact same** set of tools.
 
 ## 🚀 Why This Architecture?
 
