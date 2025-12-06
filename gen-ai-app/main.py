@@ -38,7 +38,7 @@ PORT = int(os.environ.get("PORT", "8001"))  # Gen AI app run on local 8001
 
 # --- MCP Client ---
 mcp_client = MCPClient(
-    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:{MCP_SERVER_PORT}/mcp"))
+    lambda: streamablehttp_client(f"{MCP_SERVER_URL}/mcp"))
 
 # --- Pydantic Models ---
 
