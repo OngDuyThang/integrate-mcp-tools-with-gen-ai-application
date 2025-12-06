@@ -9,11 +9,10 @@ from mcp.server.fastmcp import FastMCP
 load_dotenv()
 
 # --- Constants ---
-ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
-MCP_SERVER_PORT = 8000 if ENVIRONMENT == "dev" else 10000
+PORT = int(os.environ.get("PORT", "8000"))  # MCP server run on local 8000
 
 # Initialize the MCP server
-mcp = FastMCP("weather", port=MCP_SERVER_PORT)
+mcp = FastMCP("weather", port=PORT)
 
 # --- Helper Functions ---
 

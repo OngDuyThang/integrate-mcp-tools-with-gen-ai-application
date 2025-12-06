@@ -31,13 +31,12 @@ ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
 METHOD = "http" if ENVIRONMENT == "dev" else "https"
 
 MCP_SERVER_HOST = os.environ.get("MCP_SERVER_HOST", "127.0.0.1")
-MCP_SERVER_PORT = 8000 if ENVIRONMENT == "dev" else 10000
 
-GEN_AI_APP_PORT = 8001 if ENVIRONMENT == "dev" else 10000
+PORT = int(os.environ.get("PORT", "8001"))  # Gen AI app run on local 8001
 
 # --- MCP Client ---
 mcp_client = MCPClient(
-    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:{MCP_SERVER_PORT}/mcp"))
+    lambda: streamablehttp_client(f"{METHOD}://{MCP_SERVER_HOST}:8000/mcp"))
 
 # --- Pydantic Models ---
 
@@ -150,4 +149,4 @@ async def converse(request: ChatRequest):
 # --- Run Server ---
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, port=GEN_AI_APP_PORT)
+    uvicorn.run(app, port=PORT)
