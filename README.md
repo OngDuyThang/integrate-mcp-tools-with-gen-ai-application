@@ -28,7 +28,9 @@ Strands is a model-driven agent framework that makes integrating MCP tools incre
 │    ├── main.py            # FastAPI backend utilizing Strands Agent
 │    └── static/
 │        └── index.html     # Chat UI with Tailwind CSS
-└── requirements.txt        # Dependencies
+├─ Dockerfile
+├─ docker-compose.yml
+└── requirements.txt
 ```
 
 ## ✨ Features
@@ -41,39 +43,26 @@ Strands is a model-driven agent framework that makes integrating MCP tools incre
 
 
 ## 🛠️ Prerequisites
-* Python installed.
+* Docker and Docker Compose installed.
 
 * Google Gemini and Mistral API keys.
 
 ## ⚡ Installation & Setup
 
-1. Before going further, we must install the dependencies and config the API keys
-
-    ```bash
-    pip install -r requirements.txt
-    ```
+1. First, we must config the API keys
 
     ```bash
     GEMINI_API_KEY=YOUR_GEMINI_KEY
     MISTRAL_API_KEY=YOUR_MISTRAL_KEY
     ```
 
-2. Run the MCP server
-
-    This server runs independently and provides the tools.
+2. Run this command
 
     ```bash
-    python mcp-server/main.py
+    docker compose up
     ```
 
-
-3. Run the Gen AI App
-
-    This is the main application containing the Agent and Web server.
-
-    ```bash
-    python gen-ai-app/main.py
-    ```
+3. Access the Gen AI app at http://localhost:8001
 
 ## 🎮 Usage
 

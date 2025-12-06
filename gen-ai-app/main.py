@@ -27,18 +27,11 @@ GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
 MISTRAL_API_KEY = os.environ.get("MISTRAL_API_KEY")
 BASE_DIR = Path(__file__).resolve().parent
 
-ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
-MCP_SERVER_HOST = os.environ.get("MCP_SERVER_HOST", "127.0.0.1")
-MCP_SERVER_URL = f"http://{MCP_SERVER_HOST}:8000/mcp" if ENVIRONMENT == "dev" else f"https://{MCP_SERVER_HOST}/mcp"
-
-# Setup for run locally or deploy on Render
-HOST = "127.0.0.1" if ENVIRONMENT == "dev" else "0.0.0.0"
-PORT = int(os.environ.get("PORT", "8001"))  # Gen AI app run on local 8001
-
+MCP_SERVER_URL = os.environ.get("MCP_SERVER_URL", "http://0.0.0.0:8000/mcp")
 
 # --- MCP Client ---
 mcp_client = MCPClient(
-    lambda: streamablehttp_client(f"{MCP_SERVER_URL}/mcp"))
+    lambda: streamablehttp_client(MCP_SERVER_URL))
 
 # --- Pydantic Models ---
 
@@ -151,4 +144,4 @@ async def converse(request: ChatRequest):
 # --- Run Server ---
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host=HOST, port=PORT)
+    uvicorn.run(app, host="0.0.0.0", port=8001)

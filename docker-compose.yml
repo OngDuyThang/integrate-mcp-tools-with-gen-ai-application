@@ -1,0 +1,24 @@
+services:
+  mcp-server:
+    build: .
+    container_name: weather-mcp-server
+    command: python mcp-server/main.py
+    ports:
+      - "8000:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    extra_hosts:
+      - "host.docker.internal:host-gateway" 
+
+  gen-ai-app:
+    build: .
+    container_name: weather-gen-ai-app
+    command: python gen-ai-app/main.py
+    ports:
+      - "8001:8001"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - MISTRAL_API_KEY=${MISTRAL_API_KEY}
+      - MCP_SERVER_URL=http://mcp-server:8000/mcp
+    depends_on:
+      - mcp-server
