@@ -78,7 +78,7 @@ Strands is a model-driven agent framework that makes integrating MCP tools incre
 
 1. Gen AI App run on http://localhost:8001 with UI and API handler, while MCP server run on http://localhost:8000.
 
-2. Go to the UI on http://localhost:8001 then select Model: Choose "Gemini 2.5 Flash" or "Mistral".
+2. Go to the UI on http://localhost:8001 then select Model: Choose "Gemini 2.5 Flash" or "Mistral Large 3".
 
 3. Ask questions related to weather to invoke MCP tools:
 
