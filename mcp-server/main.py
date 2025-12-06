@@ -12,7 +12,7 @@ load_dotenv()
 ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
 
 # Setup for run locally or deploy on Render
-HOST = "0.0.0.0" if ENVIRONMENT == "dev" else "127.0.0.1"
+HOST = "127.0.0.1" if ENVIRONMENT == "dev" else "0.0.0.0"
 PORT = int(os.environ.get("PORT", "8000"))  # MCP server run on local 8000
 
 # Initialize the MCP server
