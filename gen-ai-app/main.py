@@ -32,6 +32,8 @@ METHOD = "http" if ENVIRONMENT == "dev" else "https"
 
 MCP_SERVER_HOST = os.environ.get("MCP_SERVER_HOST", "127.0.0.1")
 
+# Setup for run locally or deploy on Render
+HOST = "0.0.0.0" if ENVIRONMENT == "dev" else "127.0.0.1"
 PORT = int(os.environ.get("PORT", "8001"))  # Gen AI app run on local 8001
 
 # --- MCP Client ---
@@ -149,4 +151,4 @@ async def converse(request: ChatRequest):
 # --- Run Server ---
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, port=PORT)
+    uvicorn.run(app, host=HOST, port=PORT)
