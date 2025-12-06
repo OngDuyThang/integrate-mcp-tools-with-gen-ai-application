@@ -1,10 +1,19 @@
+import os
 from typing import Optional, Tuple
 
 import httpx
+from dotenv import load_dotenv
 from mcp.server.fastmcp import FastMCP
 
+# --- Config ---
+load_dotenv()
+
+# --- Constants ---
+ENVIRONMENT = os.environ.get("ENVIRONMENT", "dev")
+MCP_SERVER_PORT = 8000 if ENVIRONMENT == "dev" else 10000
+
 # Initialize the MCP server
-mcp = FastMCP("weather", port=8000)
+mcp = FastMCP("weather", port=MCP_SERVER_PORT)
 
 # --- Helper Functions ---
 
