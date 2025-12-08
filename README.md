@@ -92,3 +92,7 @@ To add a new tool (e.g., a Stock Price checker):
 
 4. The Strands Agent in the Gen AI App will automatically discover the new tool on the next request.
 
+## ✨ Demo
+![Gemini response](static/gemini-response.png)
+
+![Mistral response](static/mistral-response.png)
